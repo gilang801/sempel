@@ -125,7 +125,17 @@ button,[onclick],.env-scene,.wax,.p3-card,.p4-letter,.p6-ph,.back-btn,.btn-click
    PAGE 2 — BIRTHDAY GREETING
    ============================================================ */
 #p2{display:flex;align-items:center;justify-content:center;overflow:hidden}
-.p2-bg{position:absolute;inset:0;background:url('7.jpg') center/cover no-repeat;/* ← GANTI DENGAN FOTO KAMU */z-index:0}
+.p2-bg{
+  position:absolute;inset:0;z-index:0;
+  background:
+    radial-gradient(ellipse 120% 80% at 20% 20%, rgba(147,39,143,0.6) 0%, transparent 50%),
+    radial-gradient(ellipse 100% 60% at 80% 80%, rgba(192,57,43,0.7) 0%, transparent 50%),
+    radial-gradient(ellipse 80% 100% at 60% 10%, rgba(72,52,212,0.5) 0%, transparent 50%),
+    radial-gradient(ellipse 90% 70% at 10% 70%, rgba(231,76,60,0.5) 0%, transparent 50%),
+    linear-gradient(160deg,#0d0020 0%,#1a0030 25%,#200015 50%,#100020 75%,#0d0015 100%);
+  background-size:400% 400%;
+  animation:auroraShift 12s ease infinite;
+}
 .p2-bg-fallback{position:absolute;inset:0;background:linear-gradient(160deg,#7b1a1a 0%,var(--red) 40%,#8b1a1a 80%,#3a0a0a 100%);z-index:0}
 .p2-floral{position:absolute;inset:0;display:flex;flex-wrap:wrap;align-content:flex-start;overflow:hidden;opacity:0.07;font-size:clamp(3rem,8vw,5rem);z-index:1;pointer-events:none}
 .p2-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.42);z-index:2}
