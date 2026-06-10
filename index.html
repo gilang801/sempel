@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<title>Happy Birthday Keyzaa! 🎂</title>
+<title>Happy Birthday! 🎂</title>
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Great+Vibes&family=Quicksand:wght@400;500;600&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -21,9 +21,6 @@ body{width:100%;height:100%;height:100dvh;overflow:hidden;font-family:'Quicksand
   .p3-row{gap:2rem}
   .p3-card{min-width:130px;padding:1.6rem 1.4rem}
   .aff{font-size:0.68rem;max-width:165px}
-  /* p6 desktop: 3 kolom tetap, tapi lebih besar */
-  .p6-photos{grid-template-columns:repeat(3,1fr);max-width:520px;gap:18px}
-  .p6-container{padding:60px 24px 24px}
 }
 /* Cursor & touch for all interactive elements */
 button,[onclick],.env-scene,.wax,.p3-card,.p4-letter,.p6-ph,.back-btn,.btn-click{
@@ -126,7 +123,7 @@ button,[onclick],.env-scene,.wax,.p3-card,.p4-letter,.p6-ph,.back-btn,.btn-click
    ============================================================ */
 #p2{display:flex;align-items:center;justify-content:center;overflow:hidden}
 .p2-bg{
-  position:absolute;inset:0;z-index:0;
+  position:absolute;inset:0;
   background:
     radial-gradient(ellipse 120% 80% at 20% 20%, rgba(147,39,143,0.6) 0%, transparent 50%),
     radial-gradient(ellipse 100% 60% at 80% 80%, rgba(192,57,43,0.7) 0%, transparent 50%),
@@ -134,7 +131,8 @@ button,[onclick],.env-scene,.wax,.p3-card,.p4-letter,.p6-ph,.back-btn,.btn-click
     radial-gradient(ellipse 90% 70% at 10% 70%, rgba(231,76,60,0.5) 0%, transparent 50%),
     linear-gradient(160deg,#0d0020 0%,#1a0030 25%,#200015 50%,#100020 75%,#0d0015 100%);
   background-size:400% 400%;
-  animation:auroraShift 12s ease infinite;
+  animation:auroraShift 12s ease infinite 2s;
+  z-index:0;
 }
 .p2-bg-fallback{position:absolute;inset:0;background:linear-gradient(160deg,#7b1a1a 0%,var(--red) 40%,#8b1a1a 80%,#3a0a0a 100%);z-index:0}
 .p2-floral{position:absolute;inset:0;display:flex;flex-wrap:wrap;align-content:flex-start;overflow:hidden;opacity:0.07;font-size:clamp(3rem,8vw,5rem);z-index:1;pointer-events:none}
@@ -664,129 +662,26 @@ button,[onclick],.env-scene,.wax,.p3-card,.p4-letter,.p6-ph,.back-btn,.btn-click
 .p6-play-btn:hover,.p6-play-btn:active{background:linear-gradient(135deg,rgba(200,150,255,0.5),rgba(147,39,143,0.7));border-color:rgba(220,180,255,0.8);transform:scale(1.05);box-shadow:0 4px 20px rgba(150,50,200,0.5)}
 .p6-note1{position:absolute;top:2px;right:clamp(60px,12vw,80px);font-size:1.4rem;animation:noteFloat 2.5s ease-in-out infinite;pointer-events:none}
 .p6-note2{position:absolute;bottom:2px;left:clamp(50px,10vw,65px);font-size:1.1rem;animation:noteFloat 3s 0.8s ease-in-out infinite;pointer-events:none}
-/* ↓↓↓ SLOT FOTO HALAMAN CAKE — REDESIGN MOBILE ESTETIK ↓↓↓ */
-
-/* Container scroll agar semua konten muat di HP */
-.p6-container{
-  position:absolute;inset:0;
-  display:flex;flex-direction:column;align-items:center;
-  padding:max(env(safe-area-inset-top,0px),44px) 16px max(env(safe-area-inset-bottom,0px),16px);
-  gap:0;
-  overflow-y:auto;overflow-x:hidden;
-  -webkit-overflow-scrolling:touch;
-  z-index:5;
-  scrollbar-width:none;
-}
-.p6-container::-webkit-scrollbar{display:none}
-
-.p6-title{
-  font-family:'Great Vibes',cursive;
-  font-size:clamp(1.6rem,7vw,2.8rem);
-  text-align:center;
-  animation:entryDown 0.6s 0.1s cubic-bezier(0.34,1.56,0.64,1) both;
-  flex-shrink:0;
-  background:linear-gradient(135deg,#fff 0%,#f0d0ff 40%,#ffb0d0 70%,#fff 100%);
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
-  filter:drop-shadow(0 0 12px rgba(200,120,255,0.5));
-  margin-bottom:10px;
-  line-height:1.2;
-}
-
-.p6-music-card{
-  background:rgba(255,255,255,0.07);
-  border:1.5px solid rgba(200,150,255,0.3);
-  border-radius:20px;
-  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-  padding:12px 14px;
-  display:flex;align-items:center;gap:12px;
-  width:100%;max-width:440px;
-  animation:entryScale 0.7s 0.2s cubic-bezier(0.34,1.56,0.64,1) both;
-  flex-shrink:0;position:relative;
-  box-shadow:0 8px 32px rgba(100,0,150,0.25);
-  margin-bottom:14px;
-}
-
-/* ── FOTO GRID: 2 kolom besar, estetik polaroid ── */
-.p6-photos{
-  width:100%;
-  max-width:440px;
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:14px;
-  padding-bottom:8px;
-}
-
-/* Polaroid card */
-.p6-ph{
-  background:#fffaf8;
-  padding:8px 8px 28px;
-  box-shadow:0 6px 20px rgba(0,0,0,0.4),0 2px 6px rgba(0,0,0,0.2);
-  position:relative;overflow:hidden;
-  transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.35s;
-  cursor:pointer;
-  border-radius:3px;
-}
-.p6-ph:hover,.p6-ph:active{
-  transform:scale(1.06) rotate(0deg)!important;
-  z-index:10;
-  box-shadow:0 14px 40px rgba(200,100,255,0.5),0 4px 12px rgba(0,0,0,0.4);
-}
-/* Tape dekoratif */
-.p6-ph .tape{
-  position:absolute;top:-9px;left:50%;transform:translateX(-50%);
-  width:42px;height:18px;
-  background:rgba(210,170,255,0.55);
-  border-radius:3px;z-index:2;
-  box-shadow:0 1px 4px rgba(0,0,0,0.15);
-}
-.p6-ph .tape::after{
-  content:'';position:absolute;inset:0;
-  background:repeating-linear-gradient(90deg,rgba(255,255,255,0.3) 0,rgba(255,255,255,0.3) 2px,transparent 2px,transparent 6px);
-  border-radius:3px;
-}
-/* Caption kecil di bawah polaroid */
-.p6-ph .p6-ph-caption{
-  position:absolute;bottom:5px;left:0;right:0;
-  text-align:center;
-  font-family:'Caveat',cursive;
-  font-size:clamp(0.6rem,2.5vw,0.75rem);
-  color:#9b59b6;
-  opacity:0.85;
-  letter-spacing:0.5px;
-}
-/* Foto area - kotak penuh */
-.p6-ph-inner{
-  width:100%;
-  aspect-ratio:1/1;
-  display:flex;align-items:center;justify-content:center;
-  font-size:clamp(2rem,8vw,3rem);
-  overflow:hidden;
-  border-radius:1px;
-}
+/* ↓↓↓ SLOT FOTO HALAMAN CAKE ↓↓↓ */
+.p6-photos{width:100%;max-width:480px;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:clamp(5px,1.5vw,10px);flex:1;min-height:0}
+.p6-ph{background:white;padding:clamp(3px,1vw,6px) clamp(3px,1vw,6px) clamp(16px,4vw,22px);box-shadow:0 3px 12px rgba(0,0,0,0.35);position:relative;overflow:hidden;transition:transform 0.3s;cursor:pointer}
+.p6-ph:hover,.p6-ph:active{transform:scale(1.07) rotate(0deg)!important;z-index:10;box-shadow:0 8px 24px rgba(0,0,0,0.5)}
+.p6-ph .tape{position:absolute;top:-8px;left:50%;transform:translateX(-50%);width:clamp(28px,7vw,40px);height:clamp(12px,3vw,16px);background:rgba(180,120,255,0.45);border-radius:2px;z-index:2}
+.p6-ph-inner{width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:clamp(1.5rem,4vw,2.5rem);border-radius:2px;overflow:hidden}
 .p6-ph-inner img{width:100%;height:100%;object-fit:cover;display:block}
-
-/* Rotasi & animasi per foto */
-.p6-ph:nth-child(1){transform:rotate(-2.5deg);animation:entryLeft 0.5s 0.1s cubic-bezier(0.34,1.56,0.64,1) both}
+.p6-ph:nth-child(1){transform:rotate(-2deg);animation:entryLeft 0.5s 0.1s cubic-bezier(0.34,1.56,0.64,1) both}
 .p6-ph:nth-child(1) .p6-ph-inner{background:linear-gradient(135deg,#e8c4cf,#d48aa0)}
-.p6-ph:nth-child(2){transform:rotate(2deg);animation:entryRight 0.5s 0.18s cubic-bezier(0.34,1.56,0.64,1) both}
-.p6-ph:nth-child(2) .p6-ph-inner{background:linear-gradient(135deg,#c4d4e8,#88aacc)}
-.p6-ph:nth-child(3){transform:rotate(-1.5deg);animation:entryLeft 0.5s 0.26s cubic-bezier(0.34,1.56,0.64,1) both}
-.p6-ph:nth-child(3) .p6-ph-inner{background:linear-gradient(135deg,#d4c4e8,#aa88cc)}
-.p6-ph:nth-child(4){transform:rotate(2.5deg);animation:entryRight 0.5s 0.34s cubic-bezier(0.34,1.56,0.64,1) both}
-.p6-ph:nth-child(4) .p6-ph-inner{background:linear-gradient(135deg,#e8d4b0,#ccaa70)}
-.p6-ph:nth-child(5){transform:rotate(-2deg);animation:entryLeft 0.5s 0.42s cubic-bezier(0.34,1.56,0.64,1) both}
-.p6-ph:nth-child(5) .p6-ph-inner{background:linear-gradient(135deg,#c4e8d4,#88ccaa)}
-.p6-ph:nth-child(6){transform:rotate(1.5deg);animation:entryRight 0.5s 0.5s cubic-bezier(0.34,1.56,0.64,1) both}
-.p6-ph:nth-child(6) .p6-ph-inner{background:linear-gradient(135deg,#e8c4cf,#d48aa0)}
-
-.p6-xo{
-  color:rgba(200,150,255,0.4);
-  font-size:0.6rem;letter-spacing:5px;
-  text-align:center;
-  padding:10px 0 4px;
-  animation:entryFade 0.5s 1s both;
-  flex-shrink:0;
-}
+.p6-ph:nth-child(2){transform:rotate(1.5deg);animation:entryDown 0.5s 0.2s cubic-bezier(0.34,1.56,0.64,1) both}
+.p6-ph:nth-child(2) .p6-ph-inner{background:repeating-linear-gradient(0deg,rgba(192,57,43,.12) 0,rgba(192,57,43,.12) 8px,transparent 8px,transparent 16px),repeating-linear-gradient(90deg,rgba(192,57,43,.12) 0,rgba(192,57,43,.12) 8px,transparent 8px,transparent 16px),linear-gradient(135deg,#fff,#f8e8e8)}
+.p6-ph:nth-child(3){transform:rotate(-1deg);animation:entryRight 0.5s 0.3s cubic-bezier(0.34,1.56,0.64,1) both}
+.p6-ph:nth-child(3) .p6-ph-inner{background:linear-gradient(135deg,#c4d4e8,#88aacc)}
+.p6-ph:nth-child(4){transform:rotate(2deg);animation:entryLeft 0.5s 0.4s cubic-bezier(0.34,1.56,0.64,1) both}
+.p6-ph:nth-child(4) .p6-ph-inner{background:linear-gradient(135deg,#d4c4e8,#aa88cc)}
+.p6-ph:nth-child(5){transform:rotate(-1.5deg);animation:entryUp 0.5s 0.5s cubic-bezier(0.34,1.56,0.64,1) both}
+.p6-ph:nth-child(5) .p6-ph-inner{background:repeating-linear-gradient(0deg,rgba(192,57,43,.12) 0,rgba(192,57,43,.12) 8px,transparent 8px,transparent 16px),repeating-linear-gradient(90deg,rgba(192,57,43,.12) 0,rgba(192,57,43,.12) 8px,transparent 8px,transparent 16px),linear-gradient(135deg,#fff,#f8e8e8)}
+.p6-ph:nth-child(6){transform:rotate(1deg);animation:entryRight 0.5s 0.6s cubic-bezier(0.34,1.56,0.64,1) both}
+.p6-ph:nth-child(6) .p6-ph-inner{background:linear-gradient(135deg,#e8d4a0,#ccaa60)}
+.p6-xo{color:rgba(200,150,255,0.35);font-size:0.65rem;letter-spacing:4px;text-align:center;flex-shrink:0;animation:entryFade 0.5s 1s both}
 </style>
 </head>
 <body>
@@ -801,7 +696,7 @@ button,[onclick],.env-scene,.wax,.p3-card,.p4-letter,.p6-ph,.back-btn,.btn-click
   </div>
   <div class="p1-card">
     <div class="p1-tag">🎀 A Special Gift for You 🎀</div>
-    <div class="p1-title">Dibuka ya sayang</div>
+    <div class="p1-title">Dibuka yang sayang</div>
     <div class="p1-sub-title">Open this with love ♡</div>
     <div class="env-wrap">
       <div style="position:relative;display:inline-block">
@@ -836,7 +731,7 @@ button,[onclick],.env-scene,.wax,.p3-card,.p4-letter,.p6-ph,.back-btn,.btn-click
   <span class="p2-star2">⭐</span>
   <div class="p2-content">
     <div class="p2-date"></div>
-    <div class="p2-hb">Haloo Sayangg🤍💗❤️</div>
+    <div class="p2-hb">Maapin aku ya sayang🥺💖</div>
     <div class="p2-sub">I hope this little gift will make you happy 🥹</div>
     <button class="btn-click" onclick="goTo('p3')">Click here</button>
   </div>
@@ -881,10 +776,10 @@ button,[onclick],.env-scene,.wax,.p3-card,.p4-letter,.p6-ph,.back-btn,.btn-click
       <div class="p3-card" onclick="goTo('p5')" style="transform:translateY(-8px)">
         <div class="p3-badge">⭐ Special ⭐</div>
         <div class="p3-icon-box" style="background:rgba(255,255,255,0.3)">
-          🌸
+          🌻
           <span class="p3-icon-box-ribbon">💕</span>
         </div>
-        <div class="p3-card-label">cherry blossom</div>
+        <div class="p3-card-label">Flower</div>
         <div class="p3-card-sub">bunga & kata-kata indah</div>
       </div>
       <!-- CAKE -->
@@ -920,22 +815,22 @@ button,[onclick],.env-scene,.wax,.p3-card,.p4-letter,.p6-ph,.back-btn,.btn-click
     -->
     <div class="polar a">
       <div class="ph-fake" style="background:linear-gradient(135deg,#c4d4e8,#8ab0cc)">
-        <img src="wa5.jpg"> 
+        <img src="10.jpg"> 
       </div>
     </div>
     <div class="polar b">
       <div class="ph-fake" style="background:linear-gradient(135deg,#e8c4d4,#cc8ab0)">
-        <img src="wa6.jpg"> 
+        <img src="11.jpg"> 
       </div>
     </div>
     <div class="polar c">
       <div class="ph-fake" style="background:linear-gradient(135deg,#c4e8c4,#8acc8a)">
-        <img src="wa7.jpg">
+        <img src="13.jpg">
       </div>
     </div>
     <div class="polar d">
       <div class="ph-fake" style="background:linear-gradient(135deg,#e8e4c4,#cccc8a)">
-        <img src="wa8.jpg">
+        <img src="14.jpg">
       </div>
     </div>
   </div>
@@ -957,14 +852,12 @@ button,[onclick],.env-scene,.wax,.p3-card,.p4-letter,.p6-ph,.back-btn,.btn-click
     <button class="modal-close" onclick="closeModal()">×</button>
     <h3>💌 Surat Untukmu</h3>
     <p>
-      Happy 18th birthday sayang
-hari ini bukan cuma hari biasa, tapi hari ini adalah hari dimana dunia jadi lebih indah karena kamu lahir. aku bersyukur banget bisa bareng sama kamu sampai di detik ini. selamat bertambah usia sayang, semoga hal baik selalu beriringan dengan mu, semoga semesta selalu berpihak padamu, semoga jalan mu untuk mencapai masa depan di permudahkan, teruslah tumbuh, teruslah melangkah dan berbahagia lah, aku akan selalu bangga atas setiap proses yang sudah kamu lalui, semoga kebahagiaan selalu ada di raut wajah kamu, kebahagiaan selalu ada di diri kamu, dan perlindungan selalu ada di sekitar kamu cintaku.
+      Hai Sayang, aku nulis pesan ini benar-benar dari lubuk hati aku yang paling dalam. Aku mau minta maaf yang sebesar-besarnya atas apa yang terjadi kemarin. Aku tahu kata 'maaf' aja gak akan langsung bisa menyembuhkan rasa kecewa atau sakit hati yang kamu rasain sekarang, tapi aku sangat menyesal, Sayang.
 
-sayang terimakasih ya udah berusaha menjadi yg terbaik buat aku, buat hubungan kita. yg paling aku suka dari diri kamu itu, kamu bisa jadi diri kamu sendiri. kamu adalah alesan hidup aku jadi lebih berwarna,semenjak ada kamu hidup aku nggaa hampa lagii, i love u so much more than words can ever fully explain.
-big thanks for you beebee karena kamu udah jadi orang yg selalu sabar, selalu ada, dan selalu bikin aku ngerasa dicintai dengan cara yg paling tulus. you are my favorite person, the one who always makes my heart feel safe and happy. thank you for staying and loving me with all your heart. i love you, and i hope this year brings you more joy, more strength, and everything you've been praying for.
+Aku sadar, sikap atau perkataanku kemarin egois banget dan gak mikirin perasaan kamu. Padahal, tugas aku itu harusnya bikin kamu merasa aman dan bahagia, bukan malah jadi alasan kamu sedih kayak gini. Aku benci fakta bahwa akulah yang bikin senyum kamu hilang.
 
-selama aku disini, kamu pasti selalu punya seseorang yg bangga ke kamu, sesayang itu sama kamu, dan selalu dukung semua hal yang kamu jalanin. makasih yaa udah bertahan sampai sekarang. makasih juga udah hadir dan jadi salah satu alasan aku bahagia tiap hari. aku seneng bisa kenal kamu, bisa punya banyak cerita sama kamu, dan bisa liat versi versi lucu dari diri kamu, kalo nanti ada hari yg bikin kamu cape, jangan dipendem sendiri yaa sayang, inget kalo ada aku yg selalu siap nenangin kamu dan jadi rumah buat kamu pulang.💗<br><br>
-      <em>-Jefrii ❤️</em>
+Tolong jangan ragukan sayangku ke kamu, ya? Hubungan kita ini berharga banget buat aku, dan aku gak mau ego atau kecerobohanku merusak apa yang udah kita bangun sama-sama. Aku mau belajar dari kesalahan ini. Aku siap dengerin apa pun yang mau kamu sampein, dan aku bakal berusaha keras buat gak ngulangin hal bodoh ini lagi. Aku sayang kamu, tolong maafin aku ya, Sayang?💗<br><br>
+      <em>With love ❤️</em>
     </p>
   </div>
 </div>
@@ -1043,10 +936,10 @@ selama aku disini, kamu pasti selalu punya seseorang yg bangga ke kamu, sesayang
     <!-- CENTER flower -->
     <div class="p5-flower-card">
       <div class="p5-flower-ring"></div>
-      <span class="p5-flower-emoji">🌸</span>
+      <span class="p5-flower-emoji">🌻</span>
       <div class="p5-flower-name-wrap">
-        <div class="p5-fname">cherry blossom</div>
-        <div class="p5-fsub">cherry blossom ini bukan favoritmu, tapi kamu tetap favoritku 🌸❤️ 🌸</div>
+        <div class="p5-fname">Sunflower</div>
+        <div class="p5-fsub">bunga favoritmu yang paling cantik 🌸</div>
       </div>
       <div class="p5-heart-row">
         <span>🤍</span><span>💗</span><span>❤️</span>
@@ -1125,23 +1018,17 @@ selama aku disini, kamu pasti selalu punya seseorang yg bangga ke kamu, sesayang
     -->
     <div class="p6-photos">
       <div class="p6-ph"><div class="tape"></div>
-        <div class="p6-ph-inner"><img src="wa9.jpeg"></div>
-        <div class="p6-ph-caption">💕 my love</div></div>
+        <div class="p6-ph-inner"><img src="7.jpg"></div></div>
       <div class="p6-ph"><div class="tape"></div>
-        <div class="p6-ph-inner"><img src="wa10.jpeg"></div>
-        <div class="p6-ph-caption">✨ always</div></div>
+        <div class="p6-ph-inner"><img src="9.jpg"></div></div>
       <div class="p6-ph"><div class="tape"></div>
-        <div class="p6-ph-inner"><img src="wa11.jpeg"></div>
-        <div class="p6-ph-caption">🌸 beautiful</div></div>
+        <div class="p6-ph-inner"><img src="10.jpg"></div></div>
       <div class="p6-ph"><div class="tape"></div>
-        <div class="p6-ph-inner"><img src="wa12.jpeg"></div>
-        <div class="p6-ph-caption">💜 sayang</div></div>
+        <div class="p6-ph-inner"><img src="2.jpg"></div></div>
       <div class="p6-ph"><div class="tape"></div>
-        <div class="p6-ph-inner"><img src="wa13.jpeg"></div>
-        <div class="p6-ph-caption">🎀 precious</div></div>
+        <div class="p6-ph-inner"><img src="5.jpg"></div></div>
       <div class="p6-ph"><div class="tape"></div>
-        <div class="p6-ph-inner"><img src="wa14.jpeg"></div>
-        <div class="p6-ph-caption">⭐ my star</div></div>
+        <div class="p6-ph-inner"><img src="12.jpg"></div></div>
     </div>
     <div class="p6-xo">× × × × × × × × × × × × × × ×</div>
   </div>
