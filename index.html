@@ -15,6 +15,24 @@
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{font-size:clamp(14px,2.5vw,16px)}
 body{width:100%;height:100%;height:100dvh;overflow:hidden;font-family:'Quicksand',sans-serif;touch-action:manipulation}
+/* Desktop/laptop sizing improvements */
+@media (min-width:768px){
+  .p1-card{max-width:420px;padding:2.5rem 3rem}
+  .p3-row{gap:2rem}
+  .p3-card{min-width:130px;padding:1.6rem 1.4rem}
+  .aff{font-size:0.68rem;max-width:165px}
+  /* p6 desktop: 3 kolom tetap, tapi lebih besar */
+  .p6-photos{grid-template-columns:repeat(3,1fr);max-width:520px;gap:18px}
+  .p6-container{padding:60px 24px 24px}
+}
+/* Cursor & touch for all interactive elements */
+button,[onclick],.env-scene,.wax,.p3-card,.p4-letter,.p6-ph,.back-btn,.btn-click{
+  cursor:pointer;
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:rgba(0,0,0,0);
+  user-select:none;
+  -webkit-user-select:none;
+}
 .page{position:fixed;inset:0;opacity:0;pointer-events:none;background:var(--red);z-index:1;overflow:hidden}
 .page.active{opacity:1;pointer-events:all;z-index:2}
 
@@ -81,15 +99,15 @@ body{width:100%;height:100%;height:100dvh;overflow:hidden;font-family:'Quicksand
 .p1-title{font-family:'Great Vibes',cursive;font-size:clamp(2.2rem,7vw,3.4rem);color:var(--red);line-height:1;text-align:center;animation:entryDown 0.7s 0.2s cubic-bezier(0.34,1.56,0.64,1) both}
 .p1-sub-title{font-family:'Dancing Script',cursive;font-size:clamp(0.85rem,2.5vw,1rem);color:#c0392b99;text-align:center;margin-top:-0.5rem;animation:entryFade 0.6s 0.5s both}
 .env-wrap{animation:entryBounce 0.9s 0.4s cubic-bezier(0.34,1.56,0.64,1) both;position:relative}
-.env-scene{width:clamp(200px,55vw,300px);height:clamp(140px,38vw,210px);cursor:pointer;position:relative;filter:drop-shadow(0 12px 32px rgba(192,57,43,0.35));perspective:600px}
+.env-scene{width:clamp(200px,55vw,300px);height:clamp(140px,38vw,210px);cursor:pointer;position:relative;filter:drop-shadow(0 12px 32px rgba(192,57,43,0.35));perspective:600px;-webkit-tap-highlight-color:rgba(0,0,0,0);touch-action:manipulation;user-select:none;-webkit-user-select:none}
 .env-body{position:absolute;bottom:0;left:0;width:100%;height:80%;background:linear-gradient(160deg,var(--red) 0%,#a93226 100%);border-radius:8px}
 .env-body::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(255,255,255,0.03) 0,rgba(255,255,255,0.03) 1px,transparent 1px,transparent 8px);border-radius:8px}
 .env-flap{position:absolute;top:0;left:0;width:0;height:0;border-left:50% solid transparent;border-right:50% solid transparent;border-top:clamp(75px,25vw,110px) solid #922B21;transform-origin:top center;transition:transform 0.65s cubic-bezier(0.4,0,0.2,1);z-index:4}
 .env-l{position:absolute;bottom:0;left:0;width:0;height:0;border-bottom:75% solid #d44;border-right:50% solid transparent}
 .env-r{position:absolute;bottom:0;right:0;width:0;height:0;border-bottom:75% solid #d44;border-left:50% solid transparent}
 .env-bot{position:absolute;bottom:0;left:0;width:0;height:0;border-left:50% solid #a93226;border-right:50% solid #a93226;border-bottom:38% solid var(--red)}
-.env-scene:hover .env-flap,.env-scene:active .env-flap{transform:rotateX(-175deg)}
-.wax{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:5;width:clamp(46px,11vw,62px);height:clamp(46px,11vw,62px);border-radius:50%;background:radial-gradient(circle at 35% 30%,#f9e04b,#e8a000 50%,#b8780a);border:3px solid #c8940e;box-shadow:0 4px 16px rgba(0,0,0,0.35),inset 0 1px 2px rgba(255,255,255,0.3);display:flex;align-items:center;justify-content:center;font-size:clamp(1.1rem,3vw,1.6rem);animation:glowPulse 2.5s 1s ease-in-out infinite}
+.env-scene:hover .env-flap,.env-scene:active .env-flap,.env-scene.flap-open .env-flap{transform:rotateX(-175deg)}
+.wax{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:5;width:clamp(56px,14vw,74px);height:clamp(56px,14vw,74px);border-radius:50%;background:radial-gradient(circle at 35% 30%,#f9e04b,#e8a000 50%,#b8780a);border:3px solid #c8940e;box-shadow:0 4px 16px rgba(0,0,0,0.35),inset 0 1px 2px rgba(255,255,255,0.3);display:flex;align-items:center;justify-content:center;font-size:clamp(1.1rem,3vw,1.6rem);animation:glowPulse 2.5s 1s ease-in-out infinite;cursor:pointer;touch-action:manipulation}
 .p1-hint{display:flex;align-items:center;gap:0.4rem;font-size:clamp(0.72rem,2vw,0.82rem);color:#c0392b88;font-style:italic;animation:shimmer 3s 1.5s infinite}
 .p1-hint::before,.p1-hint::after{content:'✦';font-size:0.6rem;color:var(--red);opacity:0.5}
 .env-spark{position:absolute;font-size:clamp(0.9rem,2.5vw,1.3rem);pointer-events:none}
@@ -107,7 +125,17 @@ body{width:100%;height:100%;height:100dvh;overflow:hidden;font-family:'Quicksand
    PAGE 2 — BIRTHDAY GREETING
    ============================================================ */
 #p2{display:flex;align-items:center;justify-content:center;overflow:hidden}
-.p2-bg{position:absolute;inset:0;background:url('7.jpg') center/cover no-repeat;/* ← GANTI DENGAN FOTO KAMU */z-index:0}
+.p2-bg{
+  position:absolute;inset:0;z-index:0;
+  background:
+    radial-gradient(ellipse 120% 80% at 20% 20%, rgba(147,39,143,0.6) 0%, transparent 50%),
+    radial-gradient(ellipse 100% 60% at 80% 80%, rgba(192,57,43,0.7) 0%, transparent 50%),
+    radial-gradient(ellipse 80% 100% at 60% 10%, rgba(72,52,212,0.5) 0%, transparent 50%),
+    radial-gradient(ellipse 90% 70% at 10% 70%, rgba(231,76,60,0.5) 0%, transparent 50%),
+    linear-gradient(160deg,#0d0020 0%,#1a0030 25%,#200015 50%,#100020 75%,#0d0015 100%);
+  background-size:400% 400%;
+  animation:auroraShift 12s ease infinite;
+}
 .p2-bg-fallback{position:absolute;inset:0;background:linear-gradient(160deg,#7b1a1a 0%,var(--red) 40%,#8b1a1a 80%,#3a0a0a 100%);z-index:0}
 .p2-floral{position:absolute;inset:0;display:flex;flex-wrap:wrap;align-content:flex-start;overflow:hidden;opacity:0.07;font-size:clamp(3rem,8vw,5rem);z-index:1;pointer-events:none}
 .p2-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.42);z-index:2}
@@ -167,7 +195,6 @@ body{width:100%;height:100%;height:100dvh;overflow:hidden;font-family:'Quicksand
 
 #p3{overflow:hidden;display:flex;align-items:center;justify-content:center}
 
-/* Deep space aurora background */
 .p3-bg{
   position:absolute;inset:0;z-index:0;
   background:
@@ -180,23 +207,19 @@ body{width:100%;height:100%;height:100dvh;overflow:hidden;font-family:'Quicksand
   animation:auroraShift 12s ease infinite;
 }
 
-/* Liquid blobs */
 .p3-blob{position:absolute;border-radius:50%;filter:blur(60px);pointer-events:none;z-index:1;opacity:0.55}
 .p3-blob.b1{width:clamp(200px,50vw,380px);height:clamp(200px,50vw,380px);top:-10%;left:-10%;background:radial-gradient(circle,rgba(147,39,143,0.8),rgba(90,0,140,0.4));animation:blobFloat1 9s ease-in-out infinite}
 .p3-blob.b2{width:clamp(180px,45vw,350px);height:clamp(180px,45vw,350px);bottom:-15%;right:-10%;background:radial-gradient(circle,rgba(192,57,43,0.9),rgba(140,0,60,0.4));animation:blobFloat2 11s ease-in-out infinite}
 .p3-blob.b3{width:clamp(150px,35vw,280px);height:clamp(150px,35vw,280px);top:30%;left:35%;background:radial-gradient(circle,rgba(100,20,180,0.6),rgba(200,60,100,0.3));animation:blobFloat3 13s ease-in-out infinite}
 
-/* Stars field */
 .p3-stars-field{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
 .p3-star-dot{position:absolute;border-radius:50%;background:white;animation:starTwinkle ease-in-out infinite}
 
-/* Shooting stars */
 .p3-shoot{position:absolute;height:2px;background:linear-gradient(90deg,transparent,rgba(255,220,255,0.9),transparent);border-radius:2px;pointer-events:none;z-index:1;animation:shootingStar 4s linear infinite;opacity:0}
 .p3-shoot.sh1{top:15%;left:5%;animation-delay:0s;animation-duration:3.5s}
 .p3-shoot.sh2{top:35%;left:20%;animation-delay:1.8s;animation-duration:4.5s}
 .p3-shoot.sh3{top:60%;left:0%;animation-delay:3.2s;animation-duration:3s}
 
-/* Sparkle rain */
 .p3-sparkle{position:absolute;pointer-events:none;z-index:2;top:-10px;font-size:clamp(0.8rem,2vw,1.2rem);animation:sparkleRain linear infinite;opacity:0}
 .p3-sparkle:nth-child(1){left:8%;animation-duration:5s;animation-delay:0s}
 .p3-sparkle:nth-child(2){left:22%;animation-duration:7s;animation-delay:1.2s}
@@ -205,18 +228,15 @@ body{width:100%;height:100%;height:100dvh;overflow:hidden;font-family:'Quicksand
 .p3-sparkle:nth-child(5){left:72%;animation-duration:5.5s;animation-delay:1.9s}
 .p3-sparkle:nth-child(6){left:88%;animation-duration:7.5s;animation-delay:3.1s}
 
-/* Decorative orbit rings */
 .p3-circle{position:absolute;border-radius:50%;pointer-events:none;z-index:2}
 .p3-circle.c1{width:clamp(250px,65vw,420px);height:clamp(250px,65vw,420px);top:50%;left:50%;border:1px solid rgba(200,150,255,0.12);box-shadow:0 0 0 1px rgba(255,180,220,0.06);animation:orbitRing 28s linear infinite;transform-origin:center center}
 .p3-circle.c2{width:clamp(150px,40vw,260px);height:clamp(150px,40vw,260px);top:50%;left:50%;border:1px dashed rgba(255,120,160,0.15);animation:orbitRing 18s linear infinite reverse}
 .p3-circle.c3{width:clamp(80px,22vw,150px);height:clamp(80px,22vw,150px);top:50%;left:50%;border:1.5px solid rgba(180,120,255,0.2);animation:orbitRing 12s linear infinite}
 
-/* Content */
 .p3-inner{position:relative;z-index:5;text-align:center;width:100%;padding:1rem}
 .p3-tag{display:inline-block;background:rgba(255,255,255,0.08);border:1px solid rgba(200,150,255,0.4);color:rgba(220,180,255,0.95);font-size:clamp(0.65rem,1.8vw,0.78rem);letter-spacing:3px;padding:0.3rem 1.2rem;border-radius:30px;margin-bottom:0.6rem;animation:entryFade 0.5s 0.1s both;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);text-shadow:0 0 10px rgba(200,150,255,0.5)}
 .p3-title{font-family:'Great Vibes',cursive;font-size:clamp(2.5rem,8vw,4.5rem);color:white;text-align:center;margin-bottom:0.3rem;animation:entryDown 0.7s 0.2s cubic-bezier(0.34,1.56,0.64,1) both;text-shadow:0 0 40px rgba(200,120,255,0.6),0 2px 20px rgba(0,0,0,0.5);background:linear-gradient(135deg,#fff 0%,#f0d0ff 40%,#ffb0d0 70%,#fff 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .p3-subtitle{font-family:'Dancing Script',cursive;color:rgba(220,180,255,0.8);font-size:clamp(0.85rem,2.5vw,1.1rem);margin-bottom:clamp(1.5rem,4vw,2.5rem);animation:entryFade 0.5s 0.4s both;text-shadow:0 0 12px rgba(200,120,255,0.4)}
-/* Cards row */
 .p3-row{display:flex;gap:clamp(1rem,3.5vw,2.2rem);align-items:stretch;justify-content:center;flex-wrap:nowrap}
 .p3-card{
   display:flex;flex-direction:column;align-items:center;
@@ -246,7 +266,6 @@ body{width:100%;height:100%;height:100dvh;overflow:hidden;font-family:'Quicksand
 .p3-card:nth-child(2){animation:entryUp 0.7s 0.45s cubic-bezier(0.34,1.56,0.64,1) both;transform:translateY(-8px);background:rgba(255,255,255,0.1);border-color:rgba(255,180,220,0.4)}
 .p3-card:nth-child(3){animation:entryRight 0.6s 0.6s cubic-bezier(0.34,1.56,0.64,1) both}
 .p3-card:hover,.p3-card:active{transform:translateY(-14px) scale(1.06) !important;background:rgba(255,255,255,0.15);border-color:rgba(255,200,255,0.5);box-shadow:0 20px 60px rgba(150,50,200,0.4),0 0 30px rgba(255,150,200,0.2)}
-/* Icon box */
 .p3-icon-box{
   width:clamp(64px,16vw,90px);height:clamp(64px,16vw,90px);
   border-radius:50%;
@@ -263,7 +282,6 @@ body{width:100%;height:100%;height:100dvh;overflow:hidden;font-family:'Quicksand
 .p3-icon-box-ribbon{position:absolute;top:-6px;right:-6px;font-size:0.9rem;animation:twinkle 2s infinite}
 .p3-card-label{font-family:'Great Vibes',cursive;font-size:clamp(1.2rem,3.5vw,1.8rem);color:white;font-weight:600;margin-bottom:0.2rem;text-shadow:0 0 15px rgba(200,150,255,0.5)}
 .p3-card-sub{font-size:clamp(0.58rem,1.5vw,0.7rem);color:rgba(220,180,255,0.7);font-style:italic;text-align:center;letter-spacing:0.5px}
-/* Featured badge for middle card */
 .p3-badge{
   position:absolute;top:-10px;left:50%;transform:translateX(-50%);
   background:linear-gradient(135deg,#f9e04b,#e8a000);
@@ -271,13 +289,12 @@ body{width:100%;height:100%;height:100dvh;overflow:hidden;font-family:'Quicksand
   padding:0.18rem 0.8rem;border-radius:20px;white-space:nowrap;
   box-shadow:0 2px 12px rgba(255,200,0,0.5);
 }
-/* Bottom stars row */
 .p3-stars{margin-top:clamp(1rem,3vw,2rem);animation:entryFade 0.5s 1s both}
 .p3-stars span{font-size:0.9rem;margin:0 0.3rem;animation:twinkle 2s var(--sd,0s) infinite}
 .p3-stars span:nth-child(1){--sd:0s}.p3-stars span:nth-child(2){--sd:0.3s}.p3-stars span:nth-child(3){--sd:0.6s}.p3-stars span:nth-child(4){--sd:0.9s}.p3-stars span:nth-child(5){--sd:1.2s}
 
 /* ============================================================
-   PAGE 4 — MESSAGE (IMPROVED PHOTOS)
+   PAGE 4 — MESSAGE
    ============================================================ */
 #p4{display:flex;align-items:center;justify-content:center;overflow:hidden}
 .p4-bg{
@@ -288,12 +305,10 @@ body{width:100%;height:100%;height:100dvh;overflow:hidden;font-family:'Quicksand
     linear-gradient(160deg,#1a0010 0%,#3a0820 25%,#6b1030 50%,#8b1a1a 75%,#3a0510 100%);
   z-index:0;
 }
-/* Decorative swirls */
 .p4-deco-ring{position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,0.06);pointer-events:none;z-index:1}
 .p4-deco-ring.r1{width:400px;height:400px;top:-100px;right:-100px;animation:gentleSpin 25s linear infinite}
 .p4-deco-ring.r2{width:280px;height:280px;bottom:-80px;left:-60px;animation:gentleSpin 18s linear infinite reverse}
 
-/* ── Photo area: grid layout covering right side ── */
 .p4-photos{position:absolute;inset:0;z-index:2;pointer-events:none}
 .polar{
   position:absolute;background:white;
@@ -308,10 +323,8 @@ body{width:100%;height:100%;height:100dvh;overflow:hidden;font-family:'Quicksand
   display:flex;align-items:center;justify-content:center;
   font-size:clamp(2rem,6vw,3rem);overflow:hidden;
 }
-/* ↓↓↓ SLOT FOTO HALAMAN MESSAGE ↓↓↓ */
 .polar .ph-fake img{width:100%;height:100%;object-fit:cover;display:block}
 
-/* Repositioned polaroids — spread nicely across right & top */
 .polar.a{
   top:5%;left:42%;transform:rotate(3deg);
   animation:entryDown 0.6s 0.1s cubic-bezier(0.34,1.56,0.64,1) both;
@@ -333,7 +346,6 @@ body{width:100%;height:100%;height:100dvh;overflow:hidden;font-family:'Quicksand
 }
 .polar.d:hover{transform:rotate(0deg) scale(1.05)!important}
 
-/* Letter card on left */
 .p4-letter{
   position:absolute;left:3%;top:50%;transform:translateY(-50%);z-index:5;
   background:white;border-radius:12px;padding:1.1rem 1rem;
@@ -359,7 +371,7 @@ body{width:100%;height:100%;height:100dvh;overflow:hidden;font-family:'Quicksand
 .modal-close{position:absolute;top:0.8rem;right:0.8rem;background:var(--red);border:none;color:white;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:0.9rem;display:flex;align-items:center;justify-content:center}
 
 /* ============================================================
-   PAGE 5 — FLOWER (REDESIGN TOTAL CANTIK)
+   PAGE 5 — FLOWER
    ============================================================ */
 @keyframes p5BgPulse{
   0%{background-position:0% 0%}
@@ -403,7 +415,6 @@ body{width:100%;height:100%;height:100dvh;overflow:hidden;font-family:'Quicksand
 
 #p5{overflow:hidden}
 
-/* ── Aurora galaxy background (matches p3) ── */
 .p5-bg{
   position:absolute;inset:0;z-index:0;
   background:
@@ -415,24 +426,19 @@ body{width:100%;height:100%;height:100dvh;overflow:hidden;font-family:'Quicksand
   background-size:400% 400%;
   animation:auroraShift 12s ease infinite;
 }
-/* Liquid blobs p5 */
 .p5-blob{position:absolute;border-radius:50%;filter:blur(60px);pointer-events:none;z-index:1;opacity:0.5}
 .p5-blob.b1{width:clamp(180px,45vw,340px);height:clamp(180px,45vw,340px);top:-8%;left:-8%;background:radial-gradient(circle,rgba(147,39,143,0.8),rgba(90,0,140,0.4));animation:blobFloat1 10s ease-in-out infinite}
 .p5-blob.b2{width:clamp(160px,40vw,300px);height:clamp(160px,40vw,300px);bottom:-12%;right:-8%;background:radial-gradient(circle,rgba(192,57,43,0.9),rgba(140,0,60,0.4));animation:blobFloat2 12s ease-in-out infinite}
 .p5-blob.b3{width:clamp(130px,30vw,240px);height:clamp(130px,30vw,240px);top:25%;right:8%;background:radial-gradient(circle,rgba(100,20,180,0.55),rgba(200,60,100,0.3));animation:blobFloat3 14s ease-in-out infinite}
-/* Stars field p5 */
 .p5-stars-field{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
-/* Shooting stars p5 */
 .p5-shoot{position:absolute;height:2px;background:linear-gradient(90deg,transparent,rgba(255,220,255,0.9),transparent);border-radius:2px;pointer-events:none;z-index:1;animation:shootingStar 4s linear infinite;opacity:0}
 .p5-shoot.sh1{top:12%;left:3%;animation-delay:0.5s;animation-duration:4s}
 .p5-shoot.sh2{top:45%;left:15%;animation-delay:2.3s;animation-duration:3.5s}
 .p5-shoot.sh3{top:70%;left:0%;animation-delay:3.8s;animation-duration:5s}
-/* Orbit rings p5 */
 .p5-ring{position:absolute;border-radius:50%;pointer-events:none;z-index:1}
 .p5-ring.r1{width:clamp(240px,60vw,400px);height:clamp(240px,60vw,400px);top:50%;left:50%;border:1px solid rgba(200,150,255,0.1);animation:orbitRing 30s linear infinite}
 .p5-ring.r2{width:clamp(140px,35vw,240px);height:clamp(140px,35vw,240px);top:50%;left:50%;border:1px dashed rgba(255,120,160,0.12);animation:orbitRing 20s linear infinite reverse}
 
-/* ── Glowing radial overlay behind flower ── */
 .p5-glow{
   position:absolute;top:50%;left:50%;
   transform:translate(-50%,-50%);
@@ -443,7 +449,6 @@ body{width:100%;height:100%;height:100dvh;overflow:hidden;font-family:'Quicksand
   pointer-events:none;z-index:2;
 }
 
-/* ── Orbiting ring of petals ── */
 .p5-orbit{
   position:absolute;top:50%;left:50%;
   width:0;height:0;
@@ -461,7 +466,6 @@ body{width:100%;height:100%;height:100dvh;overflow:hidden;font-family:'Quicksand
 .p5-orbit-petal:nth-child(4){--orbit-r:clamp(90px,20vw,150px);animation-duration:8s;animation-delay:-4.8s}
 .p5-orbit-petal:nth-child(5){--orbit-r:clamp(90px,20vw,150px);animation-duration:8s;animation-delay:-6.4s}
 
-/* ── Outer slow orbit ── */
 .p5-orbit2{position:absolute;top:50%;left:50%;width:0;height:0;pointer-events:none;z-index:3}
 .p5-orbit2-petal{
   position:absolute;font-size:clamp(0.7rem,2vw,1rem);
@@ -472,7 +476,6 @@ body{width:100%;height:100%;height:100dvh;overflow:hidden;font-family:'Quicksand
 .p5-orbit2-petal:nth-child(3){--orbit-r:clamp(120px,28vw,200px);animation-duration:14s;animation-delay:-7s}
 .p5-orbit2-petal:nth-child(4){--orbit-r:clamp(120px,28vw,200px);animation-duration:14s;animation-delay:-10.5s}
 
-/* ── Floating background petals ── */
 .p5-bg-petal{
   position:absolute;pointer-events:none;z-index:3;
   font-size:clamp(0.8rem,2.5vw,1.4rem);opacity:0.22;
@@ -484,18 +487,15 @@ body{width:100%;height:100%;height:100dvh;overflow:hidden;font-family:'Quicksand
 .p5-bg-petal:nth-child(4){left:65%;animation-duration:11s;animation-delay:1s}
 .p5-bg-petal:nth-child(5){left:82%;animation-duration:8s;animation-delay:3s}
 
-/* ── Main inner layout ── */
 .p5-inner{
   position:relative;width:100%;height:100%;
   display:flex;align-items:center;justify-content:center;z-index:5;
 }
 
-/* ── Center flower card ── */
 .p5-flower-card{
   text-align:center;z-index:5;position:relative;
   animation:flowerPop 1s 0.1s cubic-bezier(0.34,1.56,0.64,1) both;
 }
-/* Decorative ring around flower */
 .p5-flower-ring{
   position:absolute;top:50%;left:50%;
   transform:translate(-50%,-54%);
@@ -514,7 +514,6 @@ body{width:100%;height:100%;height:100dvh;overflow:hidden;font-family:'Quicksand
   animation:pulse 2.5s 1.2s ease-in-out infinite;
   filter:drop-shadow(0 0 30px rgba(255,220,80,0.4)) drop-shadow(0 4px 16px rgba(0,0,0,0.3));
 }
-/* Name + subtitle with shimmer */
 .p5-flower-name-wrap{
   margin-top:0.3rem;position:relative;display:inline-block;
 }
@@ -534,7 +533,6 @@ body{width:100%;height:100%;height:100dvh;overflow:hidden;font-family:'Quicksand
   font-style:italic;letter-spacing:0.5px;
   margin-top:0.15rem;
 }
-/* Small heart row below name */
 .p5-heart-row{
   display:flex;justify-content:center;gap:0.3rem;margin-top:0.4rem;
   font-size:clamp(0.7rem,2vw,0.9rem);
@@ -544,7 +542,6 @@ body{width:100%;height:100%;height:100dvh;overflow:hidden;font-family:'Quicksand
 .p5-heart-row span:nth-child(2){--hd:0.25s}
 .p5-heart-row span:nth-child(3){--hd:0.5s}
 
-/* ── Affirmation cards ── */
 .aff{
   position:absolute;
   background:rgba(255,255,255,0.08);
@@ -574,7 +571,6 @@ body{width:100%;height:100%;height:100dvh;overflow:hidden;font-family:'Quicksand
   border-color:rgba(220,150,255,0.5);
   box-shadow:0 12px 36px rgba(150,50,200,0.4);
 }
-/* Individual aff positions & animations */
 .aff.l1{top:8%;left:1%;--base-t:translateX(0);animation:entryLeft 0.5s 0.15s cubic-bezier(0.34,1.56,0.64,1) both,affFloat 3.5s 1s ease-in-out infinite}
 .aff.l2{top:30%;left:0%;--base-t:translateX(0);animation:entryLeft 0.5s 0.3s cubic-bezier(0.34,1.56,0.64,1) both,affFloat 4s 1.5s ease-in-out infinite}
 .aff.l3{top:54%;left:1%;--base-t:translateX(0);animation:entryLeft 0.5s 0.45s cubic-bezier(0.34,1.56,0.64,1) both,affFloat 3.8s 0.8s ease-in-out infinite}
@@ -585,7 +581,7 @@ body{width:100%;height:100%;height:100dvh;overflow:hidden;font-family:'Quicksand
 .aff.r4{bottom:7%;right:2%;--base-t:translateX(0);animation:entryRight 0.5s 0.65s cubic-bezier(0.34,1.56,0.64,1) both,affFloat 4.3s 2.5s ease-in-out infinite}
 
 /* ============================================================
-   PAGE 6 — CAKE + MUSIC (AURORA GALAXY — matches p3 & p5)
+   PAGE 6 — CAKE + MUSIC
    ============================================================ */
 #p6{overflow:hidden}
 .p6-bg{
@@ -600,23 +596,58 @@ body{width:100%;height:100%;height:100dvh;overflow:hidden;font-family:'Quicksand
   animation:auroraShift 12s ease infinite 2s;
   z-index:0;
 }
-/* Liquid blobs p6 */
 .p6-blob{position:absolute;border-radius:50%;filter:blur(55px);pointer-events:none;z-index:1;opacity:0.5}
 .p6-blob.b1{width:clamp(180px,45vw,330px);height:clamp(180px,45vw,330px);top:-10%;right:-5%;background:radial-gradient(circle,rgba(147,39,143,0.8),rgba(90,0,140,0.4));animation:blobFloat2 11s ease-in-out infinite}
 .p6-blob.b2{width:clamp(160px,40vw,290px);height:clamp(160px,40vw,290px);bottom:-10%;left:-8%;background:radial-gradient(circle,rgba(192,57,43,0.9),rgba(140,0,60,0.4));animation:blobFloat1 9s ease-in-out infinite}
 .p6-blob.b3{width:clamp(120px,28vw,210px);height:clamp(120px,28vw,210px);top:35%;left:10%;background:radial-gradient(circle,rgba(100,20,180,0.5),rgba(200,60,100,0.25));animation:blobFloat3 15s ease-in-out infinite}
-/* Stars field p6 */
 .p6-stars-field{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
-/* Shooting stars p6 */
 .p6-shoot{position:absolute;height:2px;background:linear-gradient(90deg,transparent,rgba(255,220,255,0.85),transparent);border-radius:2px;pointer-events:none;z-index:1;animation:shootingStar 4s linear infinite;opacity:0}
 .p6-shoot.sh1{top:18%;left:8%;animation-delay:1s;animation-duration:4.5s}
 .p6-shoot.sh2{top:50%;left:0%;animation-delay:2.8s;animation-duration:3.8s}
 .p6-deco-ring{position:absolute;border-radius:50%;pointer-events:none;z-index:1}
 .p6-deco-ring.r1{width:clamp(240px,60vw,400px);height:clamp(240px,60vw,400px);top:50%;left:50%;border:1px solid rgba(200,150,255,0.1);animation:orbitRing 28s linear infinite;transform:translate(-50%,-50%)}
 .p6-deco-ring.r2{width:clamp(130px,33vw,220px);height:clamp(130px,33vw,220px);top:50%;left:50%;border:1px dashed rgba(255,120,160,0.12);animation:orbitRing 16s linear infinite reverse;transform:translate(-50%,-50%)}
-.p6-container{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:clamp(50px,12vw,70px) clamp(0.8rem,3vw,1.5rem) clamp(0.5rem,2vw,1rem);gap:clamp(0.6rem,2vw,1rem);overflow:hidden;z-index:5}
-.p6-title{font-family:'Great Vibes',cursive;font-size:clamp(1.8rem,5vw,2.8rem);text-align:center;animation:entryDown 0.6s 0.1s cubic-bezier(0.34,1.56,0.64,1) both;flex-shrink:0;background:linear-gradient(135deg,#fff 0%,#f0d0ff 40%,#ffb0d0 70%,#fff 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-shadow:none;filter:drop-shadow(0 0 12px rgba(200,120,255,0.5))}
-.p6-music-card{background:rgba(255,255,255,0.07);border:1.5px solid rgba(200,150,255,0.3);border-radius:20px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:clamp(0.7rem,2.5vw,1.2rem) clamp(1rem,3vw,1.8rem);display:flex;align-items:center;gap:clamp(0.8rem,2.5vw,1.5rem);width:100%;max-width:480px;animation:entryScale 0.7s 0.2s cubic-bezier(0.34,1.56,0.64,1) both;flex-shrink:0;position:relative;box-shadow:0 8px 32px rgba(100,0,150,0.25)}
+
+/* ── Container scroll agar semua konten muat di HP ── */
+.p6-container{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;align-items:center;
+  padding:max(env(safe-area-inset-top,0px),44px) 16px max(env(safe-area-inset-bottom,0px),16px);
+  gap:0;
+  overflow-y:auto;overflow-x:hidden;
+  -webkit-overflow-scrolling:touch;
+  z-index:5;
+  scrollbar-width:none;
+}
+.p6-container::-webkit-scrollbar{display:none}
+
+.p6-title{
+  font-family:'Great Vibes',cursive;
+  font-size:clamp(1.6rem,7vw,2.8rem);
+  text-align:center;
+  animation:entryDown 0.6s 0.1s cubic-bezier(0.34,1.56,0.64,1) both;
+  flex-shrink:0;
+  background:linear-gradient(135deg,#fff 0%,#f0d0ff 40%,#ffb0d0 70%,#fff 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 0 12px rgba(200,120,255,0.5));
+  margin-bottom:10px;
+  line-height:1.2;
+}
+
+.p6-music-card{
+  background:rgba(255,255,255,0.07);
+  border:1.5px solid rgba(200,150,255,0.3);
+  border-radius:20px;
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  padding:12px 14px;
+  display:flex;align-items:center;gap:12px;
+  width:100%;max-width:440px;
+  animation:entryScale 0.7s 0.2s cubic-bezier(0.34,1.56,0.64,1) both;
+  flex-shrink:0;position:relative;
+  box-shadow:0 8px 32px rgba(100,0,150,0.25);
+  margin-bottom:14px;
+}
+
 .p6-vinyl{width:clamp(60px,14vw,85px);height:clamp(60px,14vw,85px);border-radius:50%;flex-shrink:0;cursor:pointer;position:relative;background:conic-gradient(#111 0deg,#2a2a2a 8deg,#111 16deg,#2a2a2a 24deg,#111 32deg,#2a2a2a 40deg,#111 48deg,#2a2a2a 56deg,#111 64deg,#2a2a2a 72deg,#111 80deg,#2a2a2a 88deg,#111 96deg,#2a2a2a 104deg,#111 112deg,#2a2a2a 120deg,#111 128deg,#2a2a2a 136deg,#111 144deg,#2a2a2a 152deg,#111 160deg,#2a2a2a 168deg,#111 176deg,#2a2a2a 184deg,#111 192deg,#2a2a2a 200deg,#111 208deg,#2a2a2a 216deg,#111 224deg,#2a2a2a 232deg,#111 240deg,#2a2a2a 248deg,#111 256deg,#2a2a2a 264deg,#111 272deg,#2a2a2a 280deg,#111 288deg,#2a2a2a 296deg,#111 304deg,#2a2a2a 312deg,#111 320deg,#2a2a2a 328deg,#111 336deg,#2a2a2a 344deg,#111 352deg,#2a2a2a 360deg);border:3px solid #555;box-shadow:0 4px 16px rgba(0,0,0,0.5);transition:box-shadow 0.3s}
 .p6-vinyl::before{content:'';position:absolute;inset:27%;border-radius:50%;background:linear-gradient(135deg,#7b1fa2,#c0392b);z-index:1}
 .p6-vinyl::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:11px;height:11px;border-radius:50%;background:#1a1a1a;border:2px solid #666;z-index:2}
@@ -636,26 +667,88 @@ body{width:100%;height:100%;height:100dvh;overflow:hidden;font-family:'Quicksand
 .p6-play-btn:hover,.p6-play-btn:active{background:linear-gradient(135deg,rgba(200,150,255,0.5),rgba(147,39,143,0.7));border-color:rgba(220,180,255,0.8);transform:scale(1.05);box-shadow:0 4px 20px rgba(150,50,200,0.5)}
 .p6-note1{position:absolute;top:2px;right:clamp(60px,12vw,80px);font-size:1.4rem;animation:noteFloat 2.5s ease-in-out infinite;pointer-events:none}
 .p6-note2{position:absolute;bottom:2px;left:clamp(50px,10vw,65px);font-size:1.1rem;animation:noteFloat 3s 0.8s ease-in-out infinite;pointer-events:none}
-/* ↓↓↓ SLOT FOTO HALAMAN CAKE ↓↓↓ */
-.p6-photos{width:100%;max-width:480px;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:clamp(5px,1.5vw,10px);flex:1;min-height:0}
-.p6-ph{background:white;padding:clamp(3px,1vw,6px) clamp(3px,1vw,6px) clamp(16px,4vw,22px);box-shadow:0 3px 12px rgba(0,0,0,0.35);position:relative;overflow:hidden;transition:transform 0.3s;cursor:pointer}
-.p6-ph:hover,.p6-ph:active{transform:scale(1.07) rotate(0deg)!important;z-index:10;box-shadow:0 8px 24px rgba(0,0,0,0.5)}
-.p6-ph .tape{position:absolute;top:-8px;left:50%;transform:translateX(-50%);width:clamp(28px,7vw,40px);height:clamp(12px,3vw,16px);background:rgba(180,120,255,0.45);border-radius:2px;z-index:2}
-.p6-ph-inner{width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:clamp(1.5rem,4vw,2.5rem);border-radius:2px;overflow:hidden}
+
+/* ── FOTO GRID: 2 kolom besar, estetik polaroid ── */
+.p6-photos{
+  width:100%;
+  max-width:440px;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+  padding-bottom:8px;
+}
+
+/* Polaroid card */
+.p6-ph{
+  background:#fffaf8;
+  padding:8px 8px 28px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.4),0 2px 6px rgba(0,0,0,0.2);
+  position:relative;overflow:hidden;
+  transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.35s;
+  cursor:pointer;
+  border-radius:3px;
+}
+.p6-ph:hover,.p6-ph:active{
+  transform:scale(1.06) rotate(0deg)!important;
+  z-index:10;
+  box-shadow:0 14px 40px rgba(200,100,255,0.5),0 4px 12px rgba(0,0,0,0.4);
+}
+/* Tape dekoratif */
+.p6-ph .tape{
+  position:absolute;top:-9px;left:50%;transform:translateX(-50%);
+  width:42px;height:18px;
+  background:rgba(210,170,255,0.55);
+  border-radius:3px;z-index:2;
+  box-shadow:0 1px 4px rgba(0,0,0,0.15);
+}
+.p6-ph .tape::after{
+  content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(90deg,rgba(255,255,255,0.3) 0,rgba(255,255,255,0.3) 2px,transparent 2px,transparent 6px);
+  border-radius:3px;
+}
+/* Caption kecil di bawah polaroid */
+.p6-ph .p6-ph-caption{
+  position:absolute;bottom:5px;left:0;right:0;
+  text-align:center;
+  font-family:'Caveat',cursive;
+  font-size:clamp(0.6rem,2.5vw,0.75rem);
+  color:#9b59b6;
+  opacity:0.85;
+  letter-spacing:0.5px;
+}
+/* Foto area - kotak penuh */
+.p6-ph-inner{
+  width:100%;
+  aspect-ratio:1/1;
+  display:flex;align-items:center;justify-content:center;
+  font-size:clamp(2rem,8vw,3rem);
+  overflow:hidden;
+  border-radius:1px;
+}
 .p6-ph-inner img{width:100%;height:100%;object-fit:cover;display:block}
-.p6-ph:nth-child(1){transform:rotate(-2deg);animation:entryLeft 0.5s 0.1s cubic-bezier(0.34,1.56,0.64,1) both}
+
+/* Rotasi & animasi per foto */
+.p6-ph:nth-child(1){transform:rotate(-2.5deg);animation:entryLeft 0.5s 0.1s cubic-bezier(0.34,1.56,0.64,1) both}
 .p6-ph:nth-child(1) .p6-ph-inner{background:linear-gradient(135deg,#e8c4cf,#d48aa0)}
-.p6-ph:nth-child(2){transform:rotate(1.5deg);animation:entryDown 0.5s 0.2s cubic-bezier(0.34,1.56,0.64,1) both}
-.p6-ph:nth-child(2) .p6-ph-inner{background:repeating-linear-gradient(0deg,rgba(192,57,43,.12) 0,rgba(192,57,43,.12) 8px,transparent 8px,transparent 16px),repeating-linear-gradient(90deg,rgba(192,57,43,.12) 0,rgba(192,57,43,.12) 8px,transparent 8px,transparent 16px),linear-gradient(135deg,#fff,#f8e8e8)}
-.p6-ph:nth-child(3){transform:rotate(-1deg);animation:entryRight 0.5s 0.3s cubic-bezier(0.34,1.56,0.64,1) both}
-.p6-ph:nth-child(3) .p6-ph-inner{background:linear-gradient(135deg,#c4d4e8,#88aacc)}
-.p6-ph:nth-child(4){transform:rotate(2deg);animation:entryLeft 0.5s 0.4s cubic-bezier(0.34,1.56,0.64,1) both}
-.p6-ph:nth-child(4) .p6-ph-inner{background:linear-gradient(135deg,#d4c4e8,#aa88cc)}
-.p6-ph:nth-child(5){transform:rotate(-1.5deg);animation:entryUp 0.5s 0.5s cubic-bezier(0.34,1.56,0.64,1) both}
-.p6-ph:nth-child(5) .p6-ph-inner{background:repeating-linear-gradient(0deg,rgba(192,57,43,.12) 0,rgba(192,57,43,.12) 8px,transparent 8px,transparent 16px),repeating-linear-gradient(90deg,rgba(192,57,43,.12) 0,rgba(192,57,43,.12) 8px,transparent 8px,transparent 16px),linear-gradient(135deg,#fff,#f8e8e8)}
-.p6-ph:nth-child(6){transform:rotate(1deg);animation:entryRight 0.5s 0.6s cubic-bezier(0.34,1.56,0.64,1) both}
-.p6-ph:nth-child(6) .p6-ph-inner{background:linear-gradient(135deg,#e8d4a0,#ccaa60)}
-.p6-xo{color:rgba(200,150,255,0.35);font-size:0.65rem;letter-spacing:4px;text-align:center;flex-shrink:0;animation:entryFade 0.5s 1s both}
+.p6-ph:nth-child(2){transform:rotate(2deg);animation:entryRight 0.5s 0.18s cubic-bezier(0.34,1.56,0.64,1) both}
+.p6-ph:nth-child(2) .p6-ph-inner{background:linear-gradient(135deg,#c4d4e8,#88aacc)}
+.p6-ph:nth-child(3){transform:rotate(-1.5deg);animation:entryLeft 0.5s 0.26s cubic-bezier(0.34,1.56,0.64,1) both}
+.p6-ph:nth-child(3) .p6-ph-inner{background:linear-gradient(135deg,#d4c4e8,#aa88cc)}
+.p6-ph:nth-child(4){transform:rotate(2.5deg);animation:entryRight 0.5s 0.34s cubic-bezier(0.34,1.56,0.64,1) both}
+.p6-ph:nth-child(4) .p6-ph-inner{background:linear-gradient(135deg,#e8d4b0,#ccaa70)}
+.p6-ph:nth-child(5){transform:rotate(-2deg);animation:entryLeft 0.5s 0.42s cubic-bezier(0.34,1.56,0.64,1) both}
+.p6-ph:nth-child(5) .p6-ph-inner{background:linear-gradient(135deg,#c4e8d4,#88ccaa)}
+.p6-ph:nth-child(6){transform:rotate(1.5deg);animation:entryRight 0.5s 0.5s cubic-bezier(0.34,1.56,0.64,1) both}
+.p6-ph:nth-child(6) .p6-ph-inner{background:linear-gradient(135deg,#e8c4cf,#d48aa0)}
+
+.p6-xo{
+  color:rgba(200,150,255,0.4);
+  font-size:0.6rem;letter-spacing:5px;
+  text-align:center;
+  padding:10px 0 4px;
+  animation:entryFade 0.5s 1s both;
+  flex-shrink:0;
+}
 </style>
 </head>
 <body>
@@ -694,7 +787,6 @@ body{width:100%;height:100%;height:100dvh;overflow:hidden;font-family:'Quicksand
 <!-- ============ PAGE 2: GREETING ============ -->
 <div class="page" id="p2">
   <div class="p2-bg-fallback"></div>
-  <!-- ↓ GANTI url() DENGAN NAMA FILE FOTO KAMU, letakkan di folder yang sama ↓ -->
   <div class="p2-bg"></div>
   <div class="p2-floral">🌸🌺🌸🌺🌸🌺🌸🌺🌸🌺🌸🌺🌸🌺🌸🌺🌸🌺🌸🌺🌸🌺🌸🌺🌸🌺🌸🌺🌸🌺🌸🌺🌸🌺🌸🌺🌸🌺🌸🌺🌸🌺🌸🌺🌸🌺🌸🌺🌸🌺🌸🌺🌸🌺🌸🌺</div>
   <div class="p2-overlay"></div>
@@ -711,24 +803,19 @@ body{width:100%;height:100%;height:100dvh;overflow:hidden;font-family:'Quicksand
   </div>
 </div>
 
-<!-- ============ PAGE 3: CHOOSE (AURORA GALAXY REDESIGN) ============ -->
+<!-- ============ PAGE 3: CHOOSE ============ -->
 <div class="page" id="p3">
   <div class="p3-bg"></div>
-  <!-- Liquid blobs -->
   <div class="p3-blob b1"></div>
   <div class="p3-blob b2"></div>
   <div class="p3-blob b3"></div>
-  <!-- Stars field (generated via JS) -->
   <div class="p3-stars-field" id="p3StarsField"></div>
-  <!-- Shooting stars -->
   <div class="p3-shoot sh1"></div>
   <div class="p3-shoot sh2"></div>
   <div class="p3-shoot sh3"></div>
-  <!-- Sparkle rain -->
   <div class="p3-sparkle">✨</div><div class="p3-sparkle">🌸</div>
   <div class="p3-sparkle">💫</div><div class="p3-sparkle">⭐</div>
   <div class="p3-sparkle">✦</div><div class="p3-sparkle">🌺</div>
-  <!-- Decorative orbit rings -->
   <div class="p3-circle c1"></div>
   <div class="p3-circle c2"></div>
   <div class="p3-circle c3"></div>
@@ -737,7 +824,6 @@ body{width:100%;height:100%;height:100dvh;overflow:hidden;font-family:'Quicksand
     <div class="p3-title">These are for you</div>
     <div class="p3-subtitle">pilih hadiah yang ingin kamu buka dulu 🎀</div>
     <div class="p3-row">
-      <!-- MESSAGE -->
       <div class="p3-card" onclick="goTo('p4')">
         <div class="p3-icon-box">
           💌
@@ -746,7 +832,6 @@ body{width:100%;height:100%;height:100dvh;overflow:hidden;font-family:'Quicksand
         <div class="p3-card-label">Message</div>
         <div class="p3-card-sub">surat & foto kenangan</div>
       </div>
-      <!-- FLOWER (featured) -->
       <div class="p3-card" onclick="goTo('p5')" style="transform:translateY(-8px)">
         <div class="p3-badge">⭐ Special ⭐</div>
         <div class="p3-icon-box" style="background:rgba(255,255,255,0.3)">
@@ -756,7 +841,6 @@ body{width:100%;height:100%;height:100dvh;overflow:hidden;font-family:'Quicksand
         <div class="p3-card-label">Flower</div>
         <div class="p3-card-sub">bunga & kata-kata indah</div>
       </div>
-      <!-- CAKE -->
       <div class="p3-card" onclick="goTo('p6')">
         <div class="p3-icon-box">
           🍰
@@ -779,14 +863,6 @@ body{width:100%;height:100%;height:100dvh;overflow:hidden;font-family:'Quicksand
   <div class="p4-deco-ring r1"></div>
   <div class="p4-deco-ring r2"></div>
   <div class="p4-photos">
-    <!--
-    ╔══════════════════════════════════════════╗
-    ║  SLOT FOTO — HALAMAN MESSAGE             ║
-    ║  Ganti emoji dengan tag <img> seperti:   ║
-    ║  <img src="foto1.jpg">                   ║
-    ║  Letakkan file foto di folder yang sama  ║
-    ╚══════════════════════════════════════════╝
-    -->
     <div class="polar a">
       <div class="ph-fake" style="background:linear-gradient(135deg,#c4d4e8,#8ab0cc)">
         <img src="10.jpg"> 
@@ -826,46 +902,35 @@ body{width:100%;height:100%;height:100dvh;overflow:hidden;font-family:'Quicksand
     <button class="modal-close" onclick="closeModal()">×</button>
     <h3>💌 Surat Untukmu</h3>
     <p>
-      Hii sayang, aku cuma mau bilang makasi banyak udah datang di kehidupan aku, aku cuma bisa ngucapin makasi karna jujur aku bingung harus bilang apa, jujur aku sayang bangett sama kamu, dari awal kita ketemu sampe sekarang rasa sayang aku ke kamu ga berubah.<br><br>
-      Dan hebatnya lagi tu kamu selalu bisa bikin aku nyaman setiap detik and waktu kalo lagi sama kamu. Jujur kalo nanti kita sampe ketemu aku cuma mikir kamu bakalan ninggalin aku atau engga karna aku cuma takut diri aku ga sesuai yang kamu mau.<br><br>
-      Tapi kalo kamu mikir aku bakalan gamau, aku bakal jawab: pasti mau dong walaupun kamu kaya gimanaa pun aku tetap mau and setia sama kamu. Aku jugaa ngerasa beruntung ketemu kamu di hidup aku yang cuma sekali ini.<br><br>
-      Maaf kalo aku egois atau apapun itu, mweheheh maklum cwe 🙈 Udah deh intinya aku sayangg bangetttt sama kamuu — love uu pacarr aku yang paling aku sayangggg 💗<br><br>
+      Hai Sayang, aku nulis pesan ini benar-benar dari lubuk hati aku yang paling dalam. Aku mau minta maaf yang sebesar-besarnya atas apa yang terjadi kemarin. Aku tahu kata 'maaf' aja gak akan langsung bisa menyembuhkan rasa kecewa atau sakit hati yang kamu rasain sekarang, tapi aku sangat menyesal, Sayang.
+
+Aku sadar, sikap atau perkataanku kemarin egois banget dan gak mikirin perasaan kamu. Padahal, tugas aku itu harusnya bikin kamu merasa aman dan bahagia, bukan malah jadi alasan kamu sedih kayak gini. Aku benci fakta bahwa akulah yang bikin senyum kamu hilang.
+
+Tolong jangan ragukan sayangku ke kamu, ya? Hubungan kita ini berharga banget buat aku, dan aku gak mau ego atau kecerobohanku merusak apa yang udah kita bangun sama-sama. Aku mau belajar dari kesalahan ini. Aku siap dengerin apa pun yang mau kamu sampein, dan aku bakal berusaha keras buat gak ngulangin hal bodoh ini lagi. Aku sayang kamu, tolong maafin aku ya, Sayang?💗<br><br>
       <em>With love ❤️</em>
     </p>
   </div>
 </div>
 
-<!-- ============ PAGE 5: FLOWER (REDESIGN TOTAL) ============ -->
+<!-- ============ PAGE 5: FLOWER ============ -->
 <div class="page" id="p5">
   <button class="back-btn" onclick="goTo('p3')">← Back</button>
-
-  <!-- Aurora galaxy background -->
   <div class="p5-bg"></div>
-  <!-- Liquid blobs -->
   <div class="p5-blob b1"></div>
   <div class="p5-blob b2"></div>
   <div class="p5-blob b3"></div>
-  <!-- Stars field -->
   <div class="p5-stars-field" id="p5StarsField"></div>
-  <!-- Shooting stars -->
   <div class="p5-shoot sh1"></div>
   <div class="p5-shoot sh2"></div>
   <div class="p5-shoot sh3"></div>
-  <!-- Orbit rings -->
   <div class="p5-ring r1"></div>
   <div class="p5-ring r2"></div>
-
-  <!-- Glow behind flower -->
   <div class="p5-glow"></div>
-
-  <!-- Falling petals in background -->
   <div class="p5-bg-petal">🌸</div>
   <div class="p5-bg-petal">🌺</div>
   <div class="p5-bg-petal">🌷</div>
   <div class="p5-bg-petal">🌸</div>
   <div class="p5-bg-petal">💮</div>
-
-  <!-- Inner orbiting petals (close ring) -->
   <div class="p5-orbit">
     <span class="p5-orbit-petal">🌸</span>
     <span class="p5-orbit-petal">🌺</span>
@@ -873,18 +938,13 @@ body{width:100%;height:100%;height:100dvh;overflow:hidden;font-family:'Quicksand
     <span class="p5-orbit-petal">🌷</span>
     <span class="p5-orbit-petal">💫</span>
   </div>
-
-  <!-- Outer slow orbit -->
   <div class="p5-orbit2">
     <span class="p5-orbit2-petal">⭐</span>
     <span class="p5-orbit2-petal">🌸</span>
     <span class="p5-orbit2-petal">✦</span>
     <span class="p5-orbit2-petal">💕</span>
   </div>
-
   <div class="p5-inner">
-
-    <!-- LEFT affirmation cards -->
     <div class="aff l1">
       <span class="aff-icon">💛</span>
       Kamu baik dengan cara yang benar-benar berarti
@@ -905,8 +965,6 @@ body{width:100%;height:100%;height:100dvh;overflow:hidden;font-family:'Quicksand
       Kamu sangat dicintai dan dihargai
       <span class="aff-text">always & forever loved</span>
     </div>
-
-    <!-- CENTER flower -->
     <div class="p5-flower-card">
       <div class="p5-flower-ring"></div>
       <span class="p5-flower-emoji">🌻</span>
@@ -918,8 +976,6 @@ body{width:100%;height:100%;height:100dvh;overflow:hidden;font-family:'Quicksand
         <span>🤍</span><span>💗</span><span>❤️</span>
       </div>
     </div>
-
-    <!-- RIGHT affirmation cards -->
     <div class="aff r1">
       <span class="aff-icon">🌟</span>
       Kamu mampu meraih semua impianmu
@@ -940,25 +996,19 @@ body{width:100%;height:100%;height:100dvh;overflow:hidden;font-family:'Quicksand
       Kamu layak dapat semua kebahagiaan di dunia
       <span class="aff-text">you deserve the world</span>
     </div>
-
   </div>
 </div>
 
 <!-- ============ PAGE 6: CAKE + MUSIC ============ -->
 <div class="page" id="p6">
   <button class="back-btn" onclick="goTo('p3')">← Back</button>
-  <!-- Aurora galaxy background -->
   <div class="p6-bg"></div>
-  <!-- Liquid blobs -->
   <div class="p6-blob b1"></div>
   <div class="p6-blob b2"></div>
   <div class="p6-blob b3"></div>
-  <!-- Stars field -->
   <div class="p6-stars-field" id="p6StarsField"></div>
-  <!-- Shooting stars -->
   <div class="p6-shoot sh1"></div>
   <div class="p6-shoot sh2"></div>
-  <!-- Orbit rings -->
   <div class="p6-deco-ring r1"></div>
   <div class="p6-deco-ring r2"></div>
   <div class="p6-container">
@@ -977,31 +1027,29 @@ body{width:100%;height:100%;height:100dvh;overflow:hidden;font-family:'Quicksand
         <button class="p6-play-btn" id="playBtn" onclick="toggleMusic()">▶ Play Music</button>
       </div>
       <audio id="bgMusic" loop>
-        <!-- ↓ GANTI DENGAN FILE LAGU KAMU ↓ -->
         <source src="1.mp3" type="audio/mpeg">
         <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
       </audio>
     </div>
-    <!--
-    ╔══════════════════════════════════════════╗
-    ║  SLOT FOTO — HALAMAN CAKE (6 foto)       ║
-    ║  Ganti emoji dengan:                     ║
-    ║  <img src="foto1.jpg">                   ║
-    ╚══════════════════════════════════════════╝
-    -->
     <div class="p6-photos">
       <div class="p6-ph"><div class="tape"></div>
-        <div class="p6-ph-inner"><img src="7.jpg"></div></div>
+        <div class="p6-ph-inner"><img src="7.jpg"></div>
+        <div class="p6-ph-caption">💕 my love</div></div>
       <div class="p6-ph"><div class="tape"></div>
-        <div class="p6-ph-inner"><img src="9.jpg"></div></div>
+        <div class="p6-ph-inner"><img src="9.jpg"></div>
+        <div class="p6-ph-caption">✨ always</div></div>
       <div class="p6-ph"><div class="tape"></div>
-        <div class="p6-ph-inner"><img src="10.jpg"></div></div>
+        <div class="p6-ph-inner"><img src="10.jpg"></div>
+        <div class="p6-ph-caption">🌸 beautiful</div></div>
       <div class="p6-ph"><div class="tape"></div>
-        <div class="p6-ph-inner"><img src="2.jpg"></div></div>
+        <div class="p6-ph-inner"><img src="2.jpg"></div>
+        <div class="p6-ph-caption">💜 sayang</div></div>
       <div class="p6-ph"><div class="tape"></div>
-        <div class="p6-ph-inner"><img src="5.jpg"></div></div>
+        <div class="p6-ph-inner"><img src="5.jpg"></div>
+        <div class="p6-ph-caption">🎀 precious</div></div>
       <div class="p6-ph"><div class="tape"></div>
-        <div class="p6-ph-inner"><img src="12.jpg"></div></div>
+        <div class="p6-ph-inner"><img src="12.jpg"></div>
+        <div class="p6-ph-caption">⭐ my star</div></div>
     </div>
     <div class="p6-xo">× × × × × × × × × × × × × × ×</div>
   </div>
@@ -1068,6 +1116,7 @@ function goTo(id){
     field.appendChild(s);
   }
 })();
+
 const CONF=['🎉','🎊','✨','🌸','💕','🎈','⭐','🌟','💖','🎀','🍰','🌺'];
 function spawnConfetti(n=18){
   const w=document.getElementById('confettiWrap');
@@ -1080,8 +1129,10 @@ function spawnConfetti(n=18){
     },i*70);
   }
 }
+
 function openModal(){document.getElementById('letterModal').classList.add('open')}
 function closeModal(e){if(!e||e.target===document.getElementById('letterModal'))document.getElementById('letterModal').classList.remove('open')}
+
 let playing=false;
 function toggleMusic(){
   const a=document.getElementById('bgMusic'),v=document.getElementById('vinyl'),
@@ -1090,9 +1141,71 @@ function toggleMusic(){
   else{a.play().catch(()=>{});v.classList.add('spin-rec');b.textContent='⏸ Pause';wb.classList.add('playing');}
   playing=!playing;
 }
-document.addEventListener('touchend',e=>{e.preventDefault();},{passive:false});
-document.getElementById('letterModal').addEventListener('touchend',e=>e.stopPropagation(),{passive:false});
-document.querySelector('.modal-box').addEventListener('touchend',e=>e.stopPropagation(),{passive:false});
+
+/* Only prevent default on modal backdrop to stop scroll-through */
+document.getElementById('letterModal').addEventListener('touchmove',e=>e.preventDefault(),{passive:false});
+
+/* Make interactive elements work on all touch devices */
+function addTouchClick(el, fn) {
+  if (!el) return;
+  var moved = false;
+  el.addEventListener('touchstart', function(e){ moved = false; }, {passive:true});
+  el.addEventListener('touchmove',  function(e){ moved = true;  }, {passive:true});
+  el.addEventListener('touchend',   function(e){
+    if (!moved) { e.preventDefault(); fn.call(this, e); }
+  }, {passive:false});
+}
+
+/* Envelope */
+addTouchClick(document.querySelector('.env-scene'), function(){ goTo('p2'); });
+
+/* All p3 cards */
+document.querySelectorAll('.p3-card').forEach(function(card){
+  var dest = card.getAttribute('onclick');
+  if (!dest) return;
+  var m = dest.match(/goTo\('([^']+)'\)/);
+  if (m) addTouchClick(card, function(){ goTo(m[1]); });
+});
+
+/* Wax seal */
+addTouchClick(document.querySelector('.wax'), function(){ goTo('p2'); });
+
+/* Letter open */
+addTouchClick(document.querySelector('.p4-letter'), function(){ openModal(); });
+
+/* Modal close */
+addTouchClick(document.getElementById('letterModal'), function(e){
+  if (e.target === document.getElementById('letterModal')) closeModal();
+});
+addTouchClick(document.querySelector('.modal-close'), function(){ closeModal(); });
+
+/* Open flap animation on touch/mouse */
+var envScene = document.querySelector('.env-scene');
+if(envScene){
+  envScene.addEventListener('mouseenter', function(){ envScene.classList.add('flap-open'); });
+  envScene.addEventListener('mouseleave', function(){ envScene.classList.remove('flap-open'); });
+  envScene.addEventListener('touchstart', function(){ envScene.classList.add('flap-open'); }, {passive:true});
+}
+
+/* Vinyl + play button */
+addTouchClick(document.getElementById('vinyl'),   function(){ toggleMusic(); });
+addTouchClick(document.getElementById('playBtn'), function(){ toggleMusic(); });
+
+/* Back buttons */
+document.querySelectorAll('.back-btn').forEach(function(btn){
+  var dest = btn.getAttribute('onclick');
+  if (!dest) return;
+  var m = dest.match(/goTo\('([^']+)'\)/);
+  if (m) addTouchClick(btn, function(){ goTo(m[1]); });
+});
+
+/* btn-click (page 2) */
+document.querySelectorAll('.btn-click').forEach(function(btn){
+  var dest = btn.getAttribute('onclick');
+  if (!dest) return;
+  var m = dest.match(/goTo\('([^']+)'\)/);
+  if (m) addTouchClick(btn, function(){ goTo(m[1]); });
+});
 </script>
 </body>
 </html>
